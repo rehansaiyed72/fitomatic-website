@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitomatic Gym</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<script>
+
+function analyzeFitness(){
+
+    let height =
+    document.getElementById("height").value / 100;
+
+    let weight =
+    document.getElementById("weight").value;
+
+    let age =
+    document.getElementById("age").value;
+
+    let gender =
+    document.getElementById("gender").value;
+
+    let activity =
+    document.getElementById("activity").value;
+
+    let bmi =
+    weight / (height * height);
+
+    bmi = bmi.toFixed(1);
+
+    let category = "";
+
+    if(bmi < 18.5){
+        category = "Underweight";
+    }
+    else if(bmi < 25){
+        category = "Healthy Weight";
+    }
+    else if(bmi < 30){
+        category = "Overweight";
+    }
+    else{
+        category = "Obese";
+    }
+
+    let bmr;
+
+    if(gender === "male"){
+        bmr =
+        10 * weight +
+        6.25 * (height * 100) -
+        5 * age +
+        5;
+    }
+    else{
+        bmr =
+        10 * weight +
+        6.25 * (height * 100) -
+        5 * age -
+        161;
+    }
+
+    let calories =
+    Math.round(bmr * activity);
+
+    document.getElementById("fitness-result").innerHTML =
+    `
+    <strong>BMI:</strong> ${bmi}<br>
+    <strong>Category:</strong> ${category}<br>
+    <strong>Estimated Daily Calories:</strong> ${calories} kcal
+    `;
+}
+
+</script>
+<script>
+
+const testimonials = [
+
+{
+text:"The best gym environment I've ever trained in. Modern equipment and amazing energy.",
+name:"— Fitomatic Member"
+},
+
+{
+text:"Clean facilities, great atmosphere and highly supportive trainers. Highly recommended.",
+name:"— Fitomatic Member"
+},
+
+{
+text:"Excellent value for money and a perfect place to stay consistent with fitness goals.",
+name:"— Fitomatic Member"
+}
+
+];
+
+let current = 0;
+
+function updateTestimonial(){
+
+document.getElementById("testimonial-text").innerHTML =
+testimonials[current].text;
+
+document.getElementById("testimonial-name").innerHTML =
+testimonials[current].name;
+
+let dots =
+document.querySelectorAll(".dot");
+
+dots.forEach(dot =>
+dot.classList.remove("active"));
+
+dots[current].classList.add("active");
+
+}
+
+function nextTestimonial(){
+
+current++;
+
+if(current >= testimonials.length){
+current = 0;
+}
+
+updateTestimonial();
+
+}
+
+function prevTestimonial(){
+
+current--;
+
+if(current < 0){
+current = testimonials.length - 1;
+}
+
+updateTestimonial();
+
+}
+
+</script>
+<body>
+
+           <header id="navbar">
+    <h1 class="logo">
+    FITO<span>MATIC</span>
+</h1>
+
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+   
+
+   <section id="hero">
+
+  <div class="hero-container">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            PREMIUM FITNESS EXPERIENCE
+        </span>
+
+        <h1>
+            UNLEASH<br>
+            YOUR<br>
+            STRENGTH
+        </h1>
+
+        <p>
+            Train Hard. Stay Consistent. Become Unstoppable.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#plans" class="btn">View Plans</a>
+            <a href="#contact" class="btn btn-secondary">Join Today</a>
+        </div>
+
+    </div>
+
+    <div class="hero-athlete">
+
+        <img src="assets/athlete.png" alt="Athlete">
+
+        
+    </div>
+
+</div>
+<div class="hero-strip">
+    <div class="strip-track">
+
+        CARDIO • STRENGTH • DUMBBELL • BENCH PRESS • FITNESS • PLANK • CROSSFIT • WORKOUT •
+
+        CARDIO • STRENGTH • DUMBBELL • BENCH PRESS • FITNESS • PLANK • CROSSFIT • WORKOUT •
+
+    </div>
+</div>
+</section>
+   <section id="about">
+
+    <div class="about-bg-text">
+        ABOUT
+    </div>
+
+    <div class="about-container">
+
+        <span class="section-tag">
+            ABOUT FITOMATIC
+        </span>
+
+        <h2>
+            Built For People Who Want Results
+        </h2>
+
+        <p class="about-desc">
+            Train in a premium fitness environment with expert coaches,
+            modern equipment and personalized guidance designed to help
+            you become stronger, healthier and more confident.
+        </p>
+
+        <div class="about-features">
+
+            <div class="feature-card">
+                <h3>Premium Equipment</h3>
+                <p>Train with modern machines and professional-grade equipment.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Expert Trainers</h3>
+                <p>Get guidance from experienced fitness professionals.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Flexible Timings</h3>
+                <p>Workout when it suits your schedule and lifestyle.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+   <section id="why-us">
+
+    <div class="why-bg-text">
+        WHY
+    </div>
+
+    <div class="why-container">
+
+        <span class="section-tag">
+            WHY CHOOSE FITOMATIC
+        </span>
+
+        <h2>
+            The Fitomatic Advantage
+        </h2>
+
+        <p class="why-desc">
+            Everything you need to build strength, improve fitness,
+            and achieve your goals in one premium environment.
+        </p>
+
+        <div class="why-grid">
+
+            <div class="why-card large">
+                <span class="why-number">01</span>
+                <h3>Premium Equipment</h3>
+                <p>
+                    Train with modern machines and professional-grade
+                    equipment designed for serious results.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <span class="why-number">02</span>
+                <h3>Expert Trainers</h3>
+                <p>
+                    Get guidance from certified fitness coaches
+                    committed to your success.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <span class="why-number">03</span>
+                <h3>Personal Programs</h3>
+                <p>
+                    Customized workout plans tailored to your
+                    fitness goals.
+                </p>
+            </div>
+
+            <div class="why-card large">
+                <span class="why-number">04</span>
+                <h3>Flexible Timings</h3>
+                <p>
+                    Train when it suits your schedule with
+                    convenient gym hours.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</section>
+   <section id="plans">
+
+    <div class="plans-bg-text">
+        PLANS
+    </div>
+
+    <div class="plans-container">
+
+        <span class="section-tag">
+            MEMBERSHIP PLANS
+        </span>
+
+        <h2>
+            Choose Your Membership
+        </h2>
+
+        <p class="plans-desc">
+            Flexible membership options designed to fit your fitness journey.
+        </p>
+
+        <div class="plans-grid">
+
+            <div class="plan-card">
+                <h3>1 Month</h3>
+
+                <div class="price">
+                    ₹999
+                </div>
+
+                <ul>
+                    <li>Gym Access</li>
+                    <li>Locker Facility</li>
+                    <li>Basic Guidance</li>
+                </ul>
+
+                <a href="#contact" class="plan-btn">
+                    Join Now
+                </a>
+            </div>
+
+            <div class="plan-card popular">
+
+                <div class="popular-tag">
+                    MOST POPULAR
+                </div>
+
+                <h3>3 Months</h3>
+
+                <div class="price">
+                    ₹2499
+                </div>
+
+                <ul>
+                    <li>Gym Access</li>
+                    <li>Locker Facility</li>
+                    <li>Trainer Support</li>
+                </ul>
+
+                <a href="#contact" class="plan-btn">
+                    Join Now
+                </a>
+            </div>
+
+            <div class="plan-card">
+                <h3>6 Months</h3>
+
+                <div class="price">
+                    ₹4499
+                </div>
+
+                <ul>
+                    <li>Gym Access</li>
+                    <li>Locker Facility</li>
+                    <li>Diet Guidance</li>
+                </ul>
+
+                <a href="#contact" class="plan-btn">
+                    Join Now
+                </a>
+            </div>
+
+            <div class="plan-card">
+                <h3>1 Year</h3>
+
+                <div class="price">
+                    ₹7999
+                </div>
+
+                <ul>
+                    <li>Unlimited Access</li>
+                    <li>Locker Facility</li>
+                    <li>Trainer Support</li>
+                </ul>
+
+                <a href="#contact" class="plan-btn">
+                    Join Now
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+  <section id="fitness">
+
+    <div class="fitness-bg-text">
+        FITNESS
+    </div>
+
+    <div class="fitness-container">
+
+        <span class="section-tag">
+            FITNESS ASSESSMENT
+        </span>
+
+        <h2>
+            Discover Your Fitness Profile
+        </h2>
+
+        <p class="fitness-desc">
+            Complete your assessment and get instant insights into your BMI, activity level, and estimated daily calorie needs.
+        </p>
+
+        <div class="fitness-card">
+
+            <div class="fitness-grid">
+
+                <input type="number" id="height" placeholder="Height (cm)">
+
+                <input type="number" id="weight" placeholder="Weight (kg)">
+
+                <input type="number" id="age" placeholder="Age">
+
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <select id="activity">
+                    <option value="">Activity Level</option>
+                    <option value="1.2">Sedentary</option>
+                    <option value="1.375">Lightly Active</option>
+                    <option value="1.55">Moderately Active</option>
+                    <option value="1.725">Very Active</option>
+                </select>
+
+            </div>
+
+            <button onclick="analyzeFitness()">
+                Analyze My Fitness
+            </button>
+
+            <div id="fitness-result"></div>
+
+        </div>
+
+    </div>
+
+</section>
+    <section id="testimonials">
+
+    <div class="testimonials-bg-text">
+        TESTIMONIALS
+    </div>
+
+    <div class="testimonials-container">
+
+        <span class="section-tag">
+            MEMBER REVIEWS
+        </span>
+
+        <h2>
+            What Our Members Say
+        </h2>
+
+        <p class="testimonials-desc">
+            Real experiences from people who train with us.
+        </p>
+
+        <div class="testimonial-slider">
+
+            <button class="arrow-btn" onclick="prevTestimonial()">
+                &#10094;
+            </button>
+
+            <div class="testimonial-card">
+
+                <div id="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p id="testimonial-text">
+                    The best gym environment I've ever trained in. Modern equipment and amazing energy.
+                </p>
+
+                <h4 id="testimonial-name">
+                    — Fitomatic Member
+                </h4>
+
+            </div>
+
+            <button class="arrow-btn" onclick="nextTestimonial()">
+                &#10095;
+            </button>
+
+        </div>
+
+        <div class="dots">
+
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+
+    </div>
+
+</section>
+  <section id="contact">
+
+    <div class="contact-bg-text">
+        CONTACT
+    </div>
+
+    <div class="contact-container">
+
+        <span class="section-tag">
+            GET IN TOUCH
+        </span>
+
+        <h2>
+            Start Your Fitness Journey Today
+        </h2>
+
+        <p class="contact-desc">
+            Ready to transform your body and build a stronger version of yourself? Contact us today.
+        </p>
+
+        <div class="contact-card">
+
+            <div class="contact-item">
+                <h3>📞 Phone</h3>
+                <p>+91 75758 27541</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>📍 Location</h3>
+                <p>
+                    Radhavallabh Colony,<br>
+                    Daxini Society,<br>
+                    Maninagar,<br>
+                    Ahmedabad,<br>
+                    Gujarat - 380008
+                </p>
+            </div>
+<div class="contact-item">
+    <h3>📸 Instagram</h3>
+    <p>
+        @fitomatic_gym
+    </p>
+</div>
+           <div class="contact-buttons">
+
+    <a href="tel:+917575827541" class="contact-btn">
+        Call Now
+    </a>
+
+    <a href="https://www.instagram.com/fitomaticgym.maninagar/?hl=en"
+       target="_blank"
+       class="contact-btn insta-btn">
+
+        Instagram
+
+    </a>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            FITO<span>MATIC</span>
+        </div>
+
+        <p class="footer-text">
+            Transforming lives through fitness,
+            discipline and consistency.
+        </p>
+
+        <div class="footer-info">
+
+            <p>📞 +91 75758 27541</p>
+
+            <p>
+                📍 Maninagar, Ahmedabad,
+                Gujarat - 380008
+            </p>
+
+        </div>
+        <p>
+    📸
+    <a href="https://www.instagram.com/fitomaticgym.maninagar/?hl=en">
+        @fitomaticgym.maninagar
+    </a>
+</p>
+
+        <div class="footer-links">
+
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#plans">Plans</a>
+            <a href="#fitness">Assessment</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Fitomatic. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+    <script src="script.js"></script>
+
+</body>
+</html>
